@@ -8,7 +8,6 @@ module.exports = {
   plugins: ['@typescript-eslint/eslint-plugin'],
   extends: [
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
   ],
   root: true,
   env: {
@@ -17,7 +16,7 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js'],
   rules: {
-    "indent": ["error", "tab"],
-    "quotes": ["error", "single"]
+    // "indent": ["error", "tab"],
+    // "quotes": ["error", "double"]
   },
 };
