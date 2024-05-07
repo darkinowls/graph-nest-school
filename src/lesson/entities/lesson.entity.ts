@@ -1,5 +1,5 @@
 import {ObjectType, Field} from '@nestjs/graphql';
-import {Column, Entity, ManyToMany, ObjectIdColumn} from "typeorm";
+import {Column, Entity, ObjectIdColumn} from "typeorm";
 import {Student} from "../../students/entities/student.entity";
 
 @ObjectType('Lesson')
@@ -28,12 +28,10 @@ export class Lesson {
     endDate: Date;
 
 
-    @Field(() => [Student])
-    @ManyToMany(() => Student, student => student.lessons,
-        {
-            eager: true
-        }
-    )
+    @Field(() => [Student], {
+        defaultValue: []
+    })
+    @Column()
     students: string[];
 
 

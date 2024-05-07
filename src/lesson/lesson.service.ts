@@ -9,7 +9,8 @@ import {BadRequestException} from "@nestjs/common";
 @Injectable()
 export class LessonService {
 
-    constructor(@InjectRepository(Lesson) private lr: Repository<Lesson>) {
+    constructor(
+        @InjectRepository(Lesson) private lr: Repository<Lesson>) {
     }
 
     async create(createLessonInput: CreateLessonInput) {
@@ -49,8 +50,9 @@ export class LessonService {
                 slug: lessonSlug
             }
         })
-        lesson.students = [...lesson.students, ...studentIds]
+        lesson.students = [...lesson.students || [], ...studentIds]
         return this.lr.save(lesson)
     }
 
 }
+

@@ -40,4 +40,16 @@ export class StudentsService {
     remove(id: string) {
         return this.sr.delete(id);
     }
+
+    async getManyStudents(studentsIds: string[]): Promise<Student[]> {
+        return await this.sr.find({
+            where: {
+                id: {
+                    // @ts-expect-error TS2353
+                    $in: studentsIds
+                }
+            }
+        })
+    }
+
 }
